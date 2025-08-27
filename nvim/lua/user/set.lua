@@ -1,5 +1,8 @@
 vim.opt.relativenumber = true
 vim.opt.number = true
+-- vim.opt.paste = true
+
+vim.opt.formatoptions:remove({ "r", "o" })
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
