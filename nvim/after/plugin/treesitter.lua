@@ -24,3 +24,19 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
+
+-- Disable Tree-sitter highlighting for large files
+vim.api.nvim_create_autocmd("BufReadPre", {
+  callback = function(args)
+    local max_filesize = 200 * 1024 -- 200 KB
+    local ok, stats = pcall(vim.loop.fs_stat, args.file)
+    if ok and stats and stats.size > max_filesize then
+      vim.schedule(function()
+        vim.cmd("TSBufDisable highlight")
+        vim.cmd("syntax off")
+        print("Tree-sitter disabled for large file (>200KB)")
+      end)
+    end
+  end,
+})
+

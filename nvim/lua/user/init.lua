@@ -26,7 +26,6 @@ require("lazy").setup({
 		build = ":TSUpdate"
 	},
 	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-    { "folke/tokyonight.nvim" },
 	{ "ThePrimeagen/harpoon" },
 	{ "mbbill/undotree" },
 	{ "tpope/vim-fugitive" },
@@ -40,11 +39,14 @@ require("lazy").setup({
 	{ "neovim/nvim-lspconfig" },
 	{ "ThePrimeagen/vim-be-good" },
 	{ "nvim-lualine/lualine.nvim", dependencies = { 'nvim-tree/nvim-web-devicons' }},
-    { "chentoast/marks.nvim", event = "VeryLazy", opts = {} },
-    {
-        "kylechui/nvim-surround",
-        version = "^3.0.0", -- Use for stability; omit to use `main` branch for the latest features
-        event = "VeryLazy",
-    }
+  { "chentoast/marks.nvim", event = "VeryLazy", opts = {} },
+  {
+      "kylechui/nvim-surround",
+      version = "^3.0.0", -- Use for stability; omit to use `main` branch for the latest features
+      event = "VeryLazy",
+  },
+  {
+    "mfussenegger/nvim-dap"
+  },
 })
 

@@ -15,8 +15,8 @@ vim.keymap.set("n", "<leader>c", ":!<Up><Enter>")
 vim.keymap.set("n", "<leader>r", "<C-w>l<C-w>ji<Up><CR>")
 vim.keymap.set("n", "<leader>t", "<C-w>l<C-w>ji")
 
-vim.keymap.set("i", "<C-l>", "<Right>")
-vim.keymap.set("i", "<C-h>", "<Left>")
+-- cpp and MATLAB disp keymap
+vim.keymap.set({"n"}, "<leader>d", "yiWodisp(<Esc>pA);<Esc>");
 
 -- Move visual selection up/down
 vim.keymap.set("v", "<leader>j", ":m '>+1<CR>gv=gv", { noremap = true, silent = true }) 
