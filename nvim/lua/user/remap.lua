@@ -23,8 +23,11 @@ vim.keymap.set("v", "<leader>j", ":m '>+1<CR>gv=gv", { noremap = true, silent = 
 vim.keymap.set("v", "<leader>k", ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
 
 vim.api.nvim_create_user_command("W", "w", {})
+vim.api.nvim_create_user_command("Vs", "vs", {})
 
+-- Terminal remaps
 vim.api.nvim_create_user_command("Term", "belowright split | terminal", {})
-vim.api.nvim_create_user_command("Matlab", "vs | terminal matlab", {})
+vim.keymap.set("n", "<C-w>T", ":vs<CR><C-w>l:term<CR>i", {})
+vim.keymap.set("n", "<C-w>t", ":vs<CR><C-w>l:term<CR>i", {})
 vim.keymap.set("t", "<C-w>", "<C-\\><C-n><C-w>", {})
 vim.keymap.set("t", "<C-s>", "<C-\\><C-n>", {})

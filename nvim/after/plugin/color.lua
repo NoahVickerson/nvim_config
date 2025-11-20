@@ -10,6 +10,7 @@ function ColorMyPencils(color)
     vim.api.nvim_set_hl(0, "VertSplit",  { bg = "NONE" })
     vim.api.nvim_set_hl(0, "StatusLine", { bg = "NONE" })
     vim.api.nvim_set_hl(0, "Folded",     { bg = "NONE" })
+    vim.api.nvim_set_hl(0, "IncSearch",  { bg = "#dc8a78" })
 
 end
 

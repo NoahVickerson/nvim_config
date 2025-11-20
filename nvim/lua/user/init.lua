@@ -1,6 +1,7 @@
 require('user.set')
 require("user.remap")
 require("user.createProj")
+require("user.autocommands")
 
 -- bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -45,8 +46,9 @@ require("lazy").setup({
       version = "^3.0.0", -- Use for stability; omit to use `main` branch for the latest features
       event = "VeryLazy",
   },
+  { "mfussenegger/nvim-dap" },
   {
-    "mfussenegger/nvim-dap"
-  },
+    "folke/zen-mode.nvim",
+  }
 })
 
