@@ -40,15 +40,62 @@ require("lazy").setup({
 	{ "neovim/nvim-lspconfig" },
 	{ "ThePrimeagen/vim-be-good" },
 	{ "nvim-lualine/lualine.nvim", dependencies = { 'nvim-tree/nvim-web-devicons' }},
-  { "chentoast/marks.nvim", event = "VeryLazy", opts = {} },
-  {
-      "kylechui/nvim-surround",
-      version = "^3.0.0", -- Use for stability; omit to use `main` branch for the latest features
-      event = "VeryLazy",
-  },
-  { "mfussenegger/nvim-dap" },
-  {
-    "folke/zen-mode.nvim",
-  }
+	{ "chentoast/marks.nvim", event = "VeryLazy", opts = {} },
+	{
+		"kylechui/nvim-surround",
+		version = "^3.0.0", -- Use for stability; omit to use `main` branch for the latest features
+		event = "VeryLazy",
+	},
+	{
+		'MeanderingProgrammer/render-markdown.nvim',
+		dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim' },            -- if you use the mini.nvim suite
+		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.icons' },        -- if you use standalone mini plugins
+		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+		---@module 'render-markdown'
+		---@type render.md.UserConfig
+		opts = {},
+	},
+	{
+		"obsidian-nvim/obsidian.nvim",
+		version = "*", -- use latest release, remove to use latest commit
+		---@module 'obsidian'
+		---@type obsidian.config
+		opts = {
+			legacy_commands=false,
+			workspaces = {
+				{
+					name = "vaults",
+					path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/",
+					strict=true,
+				},
+				{
+					name = "no-vault",
+					path = function()
+						-- alternatively use the CWD:
+						-- return assert(vim.fn.getcwd())
+						return assert(vim.fs.dirname(vim.api.nvim_buf_get_name(0)))
+					end,
+					overrides = {
+						notes_subdir = vim.NIL,  -- have to use 'vim.NIL' instead of 'nil'
+						new_notes_location = "current_dir",
+						templates = {
+							folder = vim.NIL,
+						},
+						disable_frontmatter = true,
+					},
+				},
+			},
+			picker = {
+				-- name = "snacks.picker", -- use snacks picker
+				name = "telescope.nvim",   -- or telescope
+				-- name = "fzf-lua",     -- or fzf-lua
+				-- name = "mini.pick",   -- or mini.pick
+			},
+		}
+	},
+	{
+		'Julian/lean.nvim',
+		event = { 'BufReadPre *.lean', 'BufNewFile *.lean' },
+	}
 })
 
