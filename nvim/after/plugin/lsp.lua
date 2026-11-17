@@ -3,7 +3,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(event)
     local opts = {buffer = event.buf}
 
-    vim.keymap.set('n', 'gd', function() vim.lsp.buf.declaration() end, opts)
+    vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts)
     vim.keymap.set('n', 'gD', function() vim.cmd('split') vim.lsp.buf.definition() end, opts)
     vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, opts)
     vim.keymap.set('n', '<leader>vws', function() vim.lsp.buf.workspace_symbol() end, opts)
@@ -46,20 +46,29 @@ cmp.setup({
   },
 })
 
-require('lspconfig').pylsp.setup{
+vim.lsp.config('pylsp', {
+  cmd = { "pylsp" },
+  capabilities = lsp_capabilities,
+
   settings = {
     pylsp = {
       plugins = {
-        pyflakes = { enabled = false },
+        pyflakes = { enabled = true },
         pylint = { enabled = false },
         mccabe = { enabled = false },
-        pycodestyle = { enabled = false },
+        pycodestyle = { 
+          enabled = true,
+          ignore = {"E501"},
+        },
       }
     }
   }
-}
+})
+vim.lsp.enable('pylsp')
 
-require('lspconfig').arduino_language_server.setup({
+vim.lsp.config('arduino_language_server', {
+  capabilities = lsp_capabilities,
+
   cmd = {
     "arduino-language-server",
     "-cli", "/opt/homebrew/Cellar/arduino-cli/1.2.2/bin/arduino-cli",
@@ -68,3 +77,4 @@ require('lspconfig').arduino_language_server.setup({
     "-clangd", "clangd"
   }
 })
+vim.lsp.enable('arduino_language_server')

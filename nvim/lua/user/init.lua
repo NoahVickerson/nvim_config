@@ -24,11 +24,13 @@ require("lazy").setup({
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
+    lazy = false,
 		build = ":TSUpdate"
 	},
 	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 	{ "ThePrimeagen/harpoon" },
 	{ "mbbill/undotree" },
+  { "nvim-mini/mini.pick" },
 	{ "tpope/vim-fugitive" },
 	{ "williamboman/mason.nvim" },
 	{ "williamboman/mason-lspconfig.nvim" },
@@ -72,8 +74,8 @@ require("lazy").setup({
 					name = "no-vault",
 					path = function()
 						-- alternatively use the CWD:
-						-- return assert(vim.fn.getcwd())
-						return assert(vim.fs.dirname(vim.api.nvim_buf_get_name(0)))
+						return assert(vim.fn.getcwd())
+						-- return assert(vim.fs.dirname(vim.api.nvim_buf_get_name(0)))
 					end,
 					overrides = {
 						notes_subdir = vim.NIL,  -- have to use 'vim.NIL' instead of 'nil'
@@ -81,15 +83,15 @@ require("lazy").setup({
 						templates = {
 							folder = vim.NIL,
 						},
-						disable_frontmatter = true,
+						frontmatter = {enabled = true,},
 					},
 				},
 			},
 			picker = {
 				-- name = "snacks.picker", -- use snacks picker
-				name = "telescope.nvim",   -- or telescope
+				-- name = "telescope.nvim",   -- or telescope
 				-- name = "fzf-lua",     -- or fzf-lua
-				-- name = "mini.pick",   -- or mini.pick
+				name = "mini.pick",   -- or mini.pick
 			},
 		}
 	},
@@ -98,4 +100,3 @@ require("lazy").setup({
 		event = { 'BufReadPre *.lean', 'BufNewFile *.lean' },
 	}
 })
-

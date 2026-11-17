@@ -11,6 +11,11 @@ vim.opt.expandtab = true
 
 vim.api.nvim_create_autocmd("BufReadPost", {
   pattern = { "*.hpp", "*.h", "*.cpp", "*.sh", "*.c" },
+  command = "g/^#include.*\".*/norm $F/vT\"x",
+})
+
+vim.api.nvim_create_autocmd("BufReadPost", {
+  pattern = { "*.hpp", "*.h", "*.cpp", "*.sh", "*.c" },
   command = "normal! gg=G",
 })
 

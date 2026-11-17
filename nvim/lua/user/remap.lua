@@ -3,7 +3,6 @@ vim.keymap.set({ 'n' , 'v' }, 'y', '"+y', { noremap = true })
 vim.keymap.set({ 'n' , 'v' }, 'Y', 'y', { noremap = true })
 
 vim.keymap.set({ "i", "x" }, "<C-s>", "<Esc>")
-vim.keymap.set("n", "<C-i>", "jzz")
 
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
